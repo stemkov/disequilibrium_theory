@@ -86,6 +86,7 @@ svg("/home/michael/Documents/Postdoc - Ecosystem Acclimation/Research Projects/a
   
   par(mar=c(0,4.5,0,1))
   tr_fund <- comm_sim$tr[,1] # getting species niches
+  t_sites <- comm_sim$args$T_sites
   tr_fund_mismatch <- tr_fund - t_sites[17] 
 
   sp_pal <- rep(pal[2], 50); sp_pal[which(tr_fund_mismatch > 2)] <- pal[1]; sp_pal[which(tr_fund_mismatch < -2)] <- pal[3] # color palette by species niches relative to baseline site temp
