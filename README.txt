@@ -5,11 +5,12 @@ Run the scripts in the following order:
 2. acclimation_model_tests.R
 3. disequilibrium_response_forms.R
 4. simulation_demo.R
-5. apply_to_simulation.R
 
 The following auxiliary scripts are called from those above: functions.R, CommunityTempDis.R, and SpeciesPoolGen.R. The latter 2 are found in the lib folder and are associated with the metacommunity simulation from Alexander et al. (2018) and Adler et al. (2020).
 
 The following R-packages are required: data.table, fields.
+
+You can also interact with version of the figures from main_figures.R in an accompanying R-Shiny app here: https://www.stemkovski.com/visualizations/ecological-acclimation-app
 
 Please email Michael Stemkovski at m.stemkovski@gmail.com with any questions.
 

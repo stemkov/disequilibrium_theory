@@ -3,7 +3,7 @@
 test.acc.model <- function(l_given, g_given, a_given, b_given, E0_given, lower=NA, upper=NA,
                            disequil_abs = FALSE, disequil_sqr = FALSE,
                            obs_error_sd = 0, obs_error_mult = 0,
-                           form = 1, method="BFGS"){
+                           form = 1, method="BFGS", Fmax=NA){
   
   if(FALSE){
     l_given <- lambda_given[1]
@@ -29,7 +29,7 @@ test.acc.model <- function(l_given, g_given, a_given, b_given, E0_given, lower=N
                                    clim_noise_sd = 0, noise_vec = rnorm(300, 0, 2),
                                    plot = F, what_return = "all",
                                    disequil_abs = disequil_abs, disequil_sqr = disequil_sqr,
-                                   form = form)
+                                   form = form, Fmax=Fmax)
   F_sd <- sd(diff(sim$response))
   F_t <- sim$response + rnorm(300, 0, obs_error_sd) + rnorm(300, 0, obs_error_mult*F_sd)
   C_t <- sim$climate
@@ -37,10 +37,10 @@ test.acc.model <- function(l_given, g_given, a_given, b_given, E0_given, lower=N
   if(length(lower) != 1){
     fit <- fit.acc.model.sim(F_t = F_t, C_t = C_t, t = time, plot=F, disequil_abs = disequil_abs, disequil_sqr = disequil_sqr,
                              method = "L-BFGS-B", lower = lower, upper = upper,
-                             form = form)
+                             form = form, Fmax=Fmax)
   } else{
     fit <- fit.acc.model.sim(F_t = F_t, C_t = C_t, t = time, plot=F, disequil_abs = disequil_abs, disequil_sqr = disequil_sqr,
-                             form = form, method=method)
+                             form = form, method=method, Fmax=Fmax)
   }
   
   
@@ -79,6 +79,7 @@ varying_all <- as.data.frame(t(mapply(test.acc.model,
                                                       obs_error_sd = 0,
                                                       obs_error_mult = .1,
                                                       form = 1))))
+# Figure S8
 par(mfrow=c(3,2), mar=c(4,4,1,1))
 plot(lambda_est ~ lambda_given, data=varying_all,
      ylim=c(0,100))
@@ -97,9 +98,6 @@ plot(E0_est ~ E0_given, data=varying_all,
 abline(0,1,col="red")
 hist(varying_all$R2, xlim=c(0,1), main="R squared")
 
-
-
-######### Manuscript figures
 
 # fit to model data figure
 
@@ -124,6 +122,7 @@ F_t <- sim$response + rnorm(300, 0, 100)
 C_t <- sim$climate
 E_t <- sim$ecosystem
 
+# figure 7
 png("figures/fit_sim_data.png", width=800, height=500, pointsize = 15)
 
   layout(matrix(c(1,1,1,1,1,1,2,3,4),nrow=3,ncol=3))
@@ -140,7 +139,7 @@ png("figures/fit_sim_data.png", width=800, height=500, pointsize = 15)
 dev.off()
 
 
-# lambda vs. dC/dt heatmap
+### lambda vs. dC/dt heatmap - Figure 2b
 
 disequil.mag <- function(dC, lambda){
   climate <- 100 + dC*c(1:1000)

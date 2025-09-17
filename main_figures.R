@@ -1,4 +1,3 @@
-
 source("functions.R")
 `%!in%` <- Negate(`%in%`)
 library(data.table)
@@ -6,7 +5,7 @@ library(fields)
 
 #### Main acclimation and function time series figures
 
-# community climate niches over time
+# community climate niches over time - Figure 2a
 
 time = c(1:300)
 clim_assym = 200
@@ -52,7 +51,7 @@ for(i in seq_along(lambdas)){
 
 legend("topleft", inset=0.03, legend = lambdas, lty=1, lwd=3, col=cols, title=expression(lambda), cex=1.1,bty="n")
 
-# ecosystem function over time
+# ecosystem function over time - Figure 2c
 
 lambdas <- c(10, 30, 50, 100, 200, 500)
 gammas <- c(-.02, -0.018, -0.022)
