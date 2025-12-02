@@ -6,7 +6,9 @@ Run the scripts in the following order:
 3. disequilibrium_response_forms.R
 4. simulation_demo.R
 
-The following auxiliary scripts are called from those above: functions.R, CommunityTempDis.R, and SpeciesPoolGen.R. The latter 2 are found in the lib folder and are associated with the metacommunity simulation from Alexander et al. (2018) and Adler et al. (2020).
+The following auxiliary scripts are called from those above: functions.R, CommunityTempDis.R, and SpeciesPoolGen.R. The latter 2 are found in the "lib" folder and are associated with the metacommunity simulation from Alexander et al. (2018) and Adler et al. (2020).
+
+Matlab scripts for reproducing figures from the supplement at in the "sup" folder. See README_sup.txt in the "sup" folder for more information about the scripts.
 
 The following R-packages are required: data.table, fields.
 
