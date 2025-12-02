@@ -12,7 +12,7 @@ Matlab scripts for reproducing figures from the supplement at in the "sup" folde
 
 The following R-packages are required: data.table, fields.
 
-You can also interact with version of the figures from main_figures.R in an accompanying R-Shiny app here: https://www.stemkovski.com/visualizations/ecological-acclimation-app
+You can also interact with a version of the figures from main_figures.R in an accompanying R-Shiny app here: https://www.stemkovski.com/visualizations/ecological-acclimation-app
 
 Please email Michael Stemkovski at m.stemkovski@gmail.com with any questions.
 
